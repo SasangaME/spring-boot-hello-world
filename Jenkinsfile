@@ -37,14 +37,20 @@ pipeline {
             // }
         }
 
-        stage('Run App') {
-            // when {
-            //     expression { return env.BRANCH_NAME == "main" }
-            // }
-            steps {
-                sh 'java -jar target/spring-boot-2-hello-world-*-SNAPSHOT.jar --server.port=8081 > app.log 2>&1 &'
-            }
-        }
+       stage('Run App') {
+    steps {
+        sh '''
+          JAR=$(ls target/spring-boot-2-hello-world-*-SNAPSHOT.jar | head -n 1)
+          echo "Running $JAR on 8081"
+
+          # Allow process to live beyond the build
+          export JENKINS_NODE_COOKIE=dontKillMe
+
+          nohup java -jar "$JAR" --server.port=8081 > app.log 2>&1 &
+        '''
+    }
+}
+
     }
 
     // post {
