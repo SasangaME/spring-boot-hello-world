@@ -42,11 +42,7 @@ pipeline {
             //     expression { return env.BRANCH_NAME == "main" }
             // }
             steps {
-                sh '''
-                  JAR_FILE=$(ls target/*.jar | head -n 1)
-                  echo "Running $JAR_FILE"
-                  nohup java -jar "$JAR_FILE" --server.port=8081 > app.log 2>&1 &
-                '''
+                sh 'java -jar target/spring-boot-2-hello-world-*-SNAPSHOT.jar --server.port=8081 > app.log 2>&1 &'
             }
         }
     }
