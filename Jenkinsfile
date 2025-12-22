@@ -40,7 +40,7 @@ pipeline {
                 sh '''
                   JAR_FILE=$(ls target/*.jar | head -n 1)
                   echo "Running $JAR_FILE"
-                  nohup java -jar "$JAR_FILE" --server.port=8080 > app.log 2>&1 &
+                  nohup java -jar "$JAR_FILE" --server.port=8081 > app.log 2>&1 &
                 '''
             }
         }
