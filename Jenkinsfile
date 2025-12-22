@@ -38,9 +38,9 @@ pipeline {
         }
 
         stage('Run App') {
-            when {
-                expression { return env.BRANCH_NAME == "main" }
-            }
+            // when {
+            //     expression { return env.BRANCH_NAME == "main" }
+            // }
             steps {
                 sh '''
                   JAR_FILE=$(ls target/*.jar | head -n 1)
