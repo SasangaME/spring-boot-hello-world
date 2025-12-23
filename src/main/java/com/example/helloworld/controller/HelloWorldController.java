@@ -8,7 +8,7 @@ public class HelloWorldController {
 
     @GetMapping("/hello")
     public String sendGreetings() {
-        String msg = "Hello World from Jenkins Pipeline";
+        String msg = "Hello World";
         return msg;
     }
 }
