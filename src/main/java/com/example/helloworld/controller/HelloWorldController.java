@@ -8,7 +8,7 @@ public class HelloWorldController {
 
     @GetMapping("/hello")
     public String sendGreetings() {
-        String msg = "Hello World";
+        String msg = "Hello World with Webhook";
         return msg;
     }
 }
